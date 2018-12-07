@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from martor.models import MartorField
 
 class Summary(models.Model):
@@ -11,25 +12,6 @@ class Summary(models.Model):
     class Meta:
         verbose_name = 'Summary'
         verbose_name_plural = 'Summaries'
-
-
-class Degree(models.Model):
-    logo_class = models.CharField(max_length=50)
-    degree = models.CharField(max_length=200)
-    school = models.CharField(max_length=200)
-    year = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.degree
-
-
-class Skill(models.Model):
-    skill = models.CharField(max_length=200)
-    progress = models.CharField(max_length=4)
-
-    def __str__(self):
-        return self.skill
-
 
 class Project(models.Model):
     image = models.ImageField(upload_to='images/')
@@ -46,10 +28,25 @@ class Publication(models.Model):
     def __str__(self):
         return self.publication
 
-class Members(models.Model):
-    member = models.CharField(max_length=200)
-    description = models.CharField(max_length=500)
+class Post(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
+
+class Member(models.Model):
+#    image = models.ImageField(upload_to='images/')
+#    grade = models.CharField(max_length=10)
+    member = models.CharField(max_length=20)
+    description = models.CharField(max_length=200)
 
     def __str__(self):
         return self.member
-

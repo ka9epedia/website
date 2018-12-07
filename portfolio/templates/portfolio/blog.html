@@ -132,7 +132,7 @@
             }
         }
         /* Preloader css end */
-        
+
         nav {
             transition: all 0.3s ease-out;
             padding-top: 20px;
@@ -283,10 +283,10 @@
                                     <a href="#home" class="active">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#about">Member</a>
+                                    <a href="#about">About</a>
                                 </li>
                                 <li>
-                                    <a href="#projects">Event</a>
+                                    <a href="#projects">Projects</a>
                                 </li>
                                 <li>
                                     <a href="#contact" style="margin-right: 0px;">Contact</a>
@@ -400,11 +400,13 @@
                             <div class="row">
                                 <div class="col s12">
                                     <div class="card card-box">
+                                        {% for post in posts %}
                                         <div class="card-content" style="background: aliceblue; border: none !important;">
-                                            <img class="responsive-img" src="{% static 'images/profile-templete.jpg' %}" id="circle-img">
-                                            <h4 class="inner-section-heading">Welcome to OdaLab WebSite!</h4>
-                                            <p class="inner-section-content">{{summary.summary}}</p>
-                                        </div>
+                                          <p>published: {{ post.published_date }}</p>
+                                          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                                          <p>{{ post.text|linebreaksbr }}</p>
+                                        </div><br>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -451,7 +453,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
-    
+
 </body>
 
 </html>

@@ -1,18 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Degree, Skill, Summary, Project, Publication, Members
+from django.utils import timezone
+from .models import Summary, Project, Publication, Member, Post
 from .forms import ContactForm, SummaryForm
 
 #ホーム
 def home(request):
-    skills = Skill.objects.all()
-    degrees = Degree.objects.all()
     summary = Summary.objects.first()
     projects = Project.objects.all()
     publication = Publication.objects.all()
-    member = Members.objects.all()
+    member = Member.objects.all()
     form = ContactForm()
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -40,9 +39,7 @@ def home(request):
                 'errors': form.errors,
             })
 
-    return render(request, 'portfolio/index.html', {'skills': skills,
-                                                    'degrees': degrees,
-                                                    'summary': summary,
+    return render(request, 'portfolio/index.html', {'summary': summary,
                                                     'projects': projects,
                                                     'publication': publication,
                                                     'member': member,
@@ -50,13 +47,17 @@ def home(request):
 #ブログページ設定
 def blog(request):
     summary = Summary.objects.first()
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'portfolio/blog.html', {'posts': posts})
 
-    return render(request, 'portfolio/blog.html', {'summary': summary})
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'portfolio/post_detail.html', {'post': post})
 
 #メンバーページ設定
 def member(request):
     summary = Summary.objects.first()
-    member = Members.objects.all()
+    member = Member.objects.all()
 
     return render(request, 'portfolio/member.html', {'summary': summary,
                                                      'member': member})

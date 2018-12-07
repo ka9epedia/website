@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <!-- Materialize CSS CDN -->
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
     <style>
         html {
             overflow: hidden;
@@ -132,7 +133,7 @@
             }
         }
         /* Preloader css end */
-        
+
         nav {
             transition: all 0.3s ease-out;
             padding-top: 20px;
@@ -399,13 +400,23 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="col s12">
-                                    <div class="card card-box">
-                                        <div class="card-content" style="background: aliceblue; border: none !important;">
-                                            <img class="responsive-img" src="{% static 'images/profile-templete.jpg' %}" id="circle-img">
-                                            <h4 class="inner-section-heading">Welcome to OdaLab WebSite!</h4>
-                                            <p class="inner-section-content">{{summary.summary}}</p>
+                                      <form class="contact-form" action="" method="post">
+                                        <div class="item">
+                                          <label class="label" for="name" name="name">名前</label>
+                                          <input id="name" type="text">
                                         </div>
-                                    </div>
+                                        <div class="item">
+                                          <label class="label" for="e-mail">メール</label>
+                                          <input id="e-mail" type="email" name="email">
+                                        </div>
+                                        <div class="item">
+                                          <label class="label" for="message">本文</label>
+                                          <textarea rows="4" id="message" placeholder="ご意見をお寄せ下さい。" name="comment"></textarea>
+                                        </div>
+                                        <div class="item no-label">
+                                          <input type="submit">
+                                        </div>
+                                      </form>
                                 </div>
                             </div>
                         </div>
@@ -451,7 +462,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
-    
+
 </body>
 
 </html>
