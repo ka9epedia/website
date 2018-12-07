@@ -1,0 +1,457 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>OdaLab Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <!-- Materialize CSS CDN -->
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <style>
+        html {
+            overflow: hidden;
+        }
+
+        /* Preloader css begin */
+        .loader {
+            background: #222;
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 99999;
+            transition: 1s ease;
+            margin: -50px auto auto auto;
+        }
+
+        .loader-inner {
+            bottom: 0;
+            height: 60px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        .loader-line-wrap {
+            animation: spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;
+            box-sizing: border-box;
+            height: 50px;
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            transform-origin: 50% 100%;
+            width: 100px;
+        }
+
+        .loader-line {
+            border: 4px solid transparent;
+            border-radius: 100%;
+            box-sizing: border-box;
+            height: 100px;
+            left: 0;
+            margin: 0 auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+        }
+
+        .loader-line-wrap:nth-child(1) {
+            animation-delay: -50ms;
+        }
+
+        .loader-line-wrap:nth-child(2) {
+            animation-delay: -100ms;
+        }
+
+        .loader-line-wrap:nth-child(3) {
+            animation-delay: -150ms;
+        }
+
+        .loader-line-wrap:nth-child(4) {
+            animation-delay: -200ms;
+        }
+
+        .loader-line-wrap:nth-child(5) {
+            animation-delay: -250ms;
+        }
+
+        .loader-line-wrap:nth-child(1) .loader-line {
+            border-color: hsl(0, 80%, 60%);
+            height: 90px;
+            width: 90px;
+            top: 7px;
+        }
+
+        .loader-line-wrap:nth-child(2) .loader-line {
+            border-color: hsl(60, 80%, 60%);
+            height: 76px;
+            width: 76px;
+            top: 14px;
+        }
+
+        .loader-line-wrap:nth-child(3) .loader-line {
+            border-color: hsl(120, 80%, 60%);
+            height: 62px;
+            width: 62px;
+            top: 21px;
+        }
+
+        .loader-line-wrap:nth-child(4) .loader-line {
+            border-color: hsl(180, 80%, 60%);
+            height: 48px;
+            width: 48px;
+            top: 28px;
+        }
+
+        .loader-line-wrap:nth-child(5) .loader-line {
+            border-color: hsl(240, 80%, 60%);
+            height: 34px;
+            width: 34px;
+            top: 35px;
+        }
+
+        @keyframes spin {
+
+            0%,
+            15% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* Preloader css end */
+        
+        nav {
+            transition: all 0.3s ease-out;
+            padding-top: 20px;
+            overflow: hidden;
+            background-color: transparent !important;
+        }
+
+        nav li>a {
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 0 0;
+            margin: 0 20px;
+            height: 52px;
+        }
+
+        header {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("{% static 'images/background.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: fixed;
+            content: ' ';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            will-change: transform;
+            z-index: -1;
+        }
+
+        .centerDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #hero {
+            color: #fff;
+            height: calc(100vh - 84px);
+            width: 100%;
+            position: fixed;
+        }
+
+        #hero h1 {
+            margin: 3rem 0 3rem 0 !important;
+            font-size: 5rem;
+            font-weight: 900;
+        }
+
+        #type {
+            font-size: 1.4rem;
+            font-family: monospace;
+        }
+
+        .typed-cursor {
+            opacity: 1;
+            font-size: 1.5rem;
+            animation: blink .5s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #hero ul {
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        #hero ul>li {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 4rem;
+        }
+
+        .zoomableLink {
+            color: #FFF;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #scroll-btn {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader begin -->
+    <div class="loader" id="preloader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    <div id="wrapper">
+        <header id="home">
+            <!-- Navbar begin -->
+            <div class="navbar-fixed">
+                <nav class="z-depth-0 nav-extended">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                            <a href="/" class="logo left">
+                                <img src="{% static 'images/logo-templete.png' %}" alt="logo" id="logo-image">
+                            </a>
+                            <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up right" id="sidenav-hamburger">
+                                <i class="fas fa-bars" style="font-size: 30px;"></i>
+                            </a>
+                            <ul class="right hide-on-small-only">
+                                <li>
+                                    <a href="#home" class="active">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#about">Member</a>
+                                </li>
+                                <li>
+                                    <a href="#projects">Event</a>
+                                </li>
+                                <li>
+                                    <a href="#contact" style="margin-right: 0px;">Contact</a>
+                                </li>
+                                <!-- Hide Blog Link for a while
+                                <li>
+                                    <a href="#blog" style="margin-right: 0px; color: aqua;">Blog</a>
+                                </li>
+                                -->
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Navbar begin -->
+
+            <!-- Sidenav begin -->
+            <ul id="slide-out" class="sidenav">
+                <a href="#" class="sidenav-close right" id="sidenav-close">&times;</a>
+                <div id="sidenav-items">
+                    <li>
+                        <a href="#home" class="center-align sidenav-close">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="center-align sidenav-close">About</a>
+                    </li>
+                    <li>
+                        <a href="#projects" class="center-align sidenav-close">Projects</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="center-align sidenav-close">Contact</a>
+                    </li>
+                    <!-- Hide Blog Link for a while
+                    <li style="border-bottom: none;">
+                        <a href="#blog" class="center-align sidenav-close" style="color: aqua;">Blog</a>
+                    </li>
+                    -->
+                </div>
+            </ul>
+            <!-- Sidenav end -->
+
+            <!-- Hero Section begin -->
+            <div id="hero" class="centerDiv">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <h1 class="center-align">OdaLab Blog</h1>
+                        </div>
+                        <div class="col s12 center-align">
+                            <span id="type"></span>
+                        </div>
+                        <div class="col s12">
+                            <ul>
+                                <li>
+                                    <a href="{% url 'blog' %}" target="_blank" class="zoomableLink">
+                                        <!--<i class="fab fa-github"></i>-->
+                                        <i class="fas fa-book-open"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'member' %}" target="_blank" class="zoomableLink">
+                                        <i class="fas fa-users"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}" target="_blank" class="zoomableLink">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'event' %}" target="_blank" class="zoomableLink">
+                                        <i class="fas fa-camera"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'questionnaire' %}" target="_blank" class="zoomableLink">
+                                        <!--<i class="fas fa-envelope"></i>-->
+                                        <i class="fas fa-question"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="scroll-btn">
+                            <div class="col s12">
+                                <h5 class="center-align">Scroll Down</h5>
+                            </div>
+                            <div class="col s12">
+                                <ul style="margin-top: -5px;">
+                                    <li style="font-size: 2rem;">
+                                        <a href="#about" class="center-align zoomableLink">
+                                            <i class="fas fa-chevron-circle-down"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hero Section end -->
+        </header>
+        <div id="page-sections">
+            <!-- About section begin -->
+            <section id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <h1 class="center-align section-heading" style="color: #252934;">Blog</h1>
+                        </div>
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="card card-box">
+                                        <div class="card-content" style="background: aliceblue; border: none !important;">
+                                            <img class="responsive-img" src="{% static 'images/profile-templete.jpg' %}" id="circle-img">
+                                            <h4 class="inner-section-heading">Welcome to OdaLab WebSite!</h4>
+                                            <p class="inner-section-content">{{summary.summary}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section end -->
+        </div>
+    </div>
+    <footer style="background: #222;color: #9e9e9e;width: 100%;position: relative;text-align: center;">
+        <p><i class="far fa-copyright"></i> {% now "Y" %} OdaLab All rights reserved.</p>
+    </footer>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- Materialize JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- typed.js -->
+    <script src="{% static 'js/typed.min.js' %}"></script>
+    <!-- Custom Javascript File -->
+    <script src="{% static 'js/app.js' %}"></script>
+    <noscript id="deferred-styles">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </noscript>
+    <script>
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement)
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Oswald|Lato:400,300|Montserrat:700,400" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    
+</body>
+
+</html>

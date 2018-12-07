@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>R.I.P OdaLab</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <style>
+    .iframe-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 120%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .iframe-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <h2>アンケートにご協力ください！</h2>
+    <div class="questionnaire">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDaQpUR2KH1eLLZK2rI9qwKLrXZPkrFMscJICNcCbiV1UzeA/viewform?embedded=true" width="640" height="1499" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます...</iframe>
+    </div>
+    
+</body>
+<footer style="background: #222;color: #9e9e9e;width: 100%;position: relative;text-align: center;">
+    <p><i class="far fa-copyright"></i> {% now "Y" %} OdaLab All rights reserved.</p>
+</footer>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Oswald|Lato:400,300|Montserrat:700,400" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+
+</html>

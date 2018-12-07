@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page not found</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <style>
+        body {
+            height: 100vh;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button::-moz-focus-inner {
+            border: 0;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 16em;
+            font-family: monospace;
+        }
+
+        h6 {
+            font-size: 1.1rem;
+            font-family: monospace;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
+
+        .ovalButton {
+            width: 150px;
+            height: 50px;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            border: 1px solid #FFF;
+            background: transparent !important;
+            color: #FFF;
+            outline: none;
+        }
+
+        .ovalButton:hover {
+            background: #FFF !important;
+            color: red;
+            cursor: pointer;
+        }
+
+        #container {
+            text-align: center;
+            color: white;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 11em;
+            }
+
+            h6 span {
+                display: block;
+                font-size: 0.7em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>404</h1>
+        <h6><span>The page you are trying to reach does not exist.</span><span> Please enter a valid URL.</span></h6>
+        <button style="font-family: 'Lato', sans-serif;" class="ovalButton" onclick="window.location.href='/';">Return
+            back</button>
+    </div>
+</body>
+
+</html>
