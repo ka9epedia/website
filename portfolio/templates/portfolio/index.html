@@ -410,7 +410,8 @@
                                         <div class="card-content" style="background: aliceblue; border: none !important;">
                                             <img class="responsive-img" src="{% static 'images/profile-templete.jpg' %}" id="circle-img">
                                             <h4 class="inner-section-heading">Welcome to OdaLab WebSite!</h4>
-                                            <p class="inner-section-content">{{ summary.summary }}</p>
+                                            {% load martortags %}
+                                            <p class="inner-section-content">{{ summary.summary|safe_markdown }}</p>
                                         </div>
                                     </div>
                                 </div>

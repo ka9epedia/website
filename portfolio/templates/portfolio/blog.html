@@ -395,7 +395,8 @@
                                         <div class="card-content" style="background: aliceblue; border: none !important;">
                                           <p>published: {{ post.published_date }}</p>
                                           <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                                          <p>{{ post.text|linebreaksbr }}</p>
+                                          {% load martortags %}
+                                          <p>{{ post.text|safe_markdown }}</p>
                                         </div><br>
                                         {% endfor %}
                                     </div>

@@ -341,30 +341,33 @@
                         <div class="col s12">
                             <ul>
                                 <li>
-                                    <a href="{% url 'blog' %}" target="_blank" class="zoomableLink">
-                                        <!--<i class="fab fa-github"></i>-->
+                                    <a href="{% url 'blog' %}" class="zoomableLink">
                                         <i class="fas fa-book-open"></i>
+                                        <h6>blog</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'member' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'member' %}" class="zoomableLink">
                                         <i class="fas fa-users"></i>
+                                        <h6>member</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'contact' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'contact' %}" class="zoomableLink">
                                         <i class="fas fa-envelope"></i>
+                                        <h6>contact</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'event' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'event' %}" class="zoomableLink">
                                         <i class="fas fa-camera"></i>
+                                        <h6>event</h6>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'questionnaire' %}" target="_blank" class="zoomableLink">
-                                        <!--<i class="fas fa-envelope"></i>-->
                                         <i class="fas fa-question"></i>
+                                        <h6>questionnaire</h6>
                                     </a>
                                 </li>
                             </ul>
@@ -406,7 +409,8 @@
                                             </div>
                                         {% endif %}
                                         <h1>{{ post.title }}</h1>
-                                        <p>{{ post.text|linebreaksbr }}</p>
+                                        {% load martortags %}
+                                        <p>{{ post.text|safe_markdown }}</p>
                                     </div>
                                 </div>
                             </div>

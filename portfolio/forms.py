@@ -4,6 +4,9 @@ from martor.fields import MartorFormField
 class SummaryForm(forms.Form):
     summary = MartorFormField()
 
+class TextForm(forms.Form):
+    text = MartorFormField()
+
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=200, widget=forms.TextInput(attrs={
         'class': 'validate',

@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.utils import timezone
 from .models import Summary, Project, Publication, Member, Post, Gallery
-from .forms import ContactForm, SummaryForm
+from .forms import ContactForm, SummaryForm, TextForm
 
 #ホーム
 def home(request):
