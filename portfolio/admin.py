@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from martor.widgets import AdminMartorWidget
-from .models import Summary, Project, Publication, Member, Post
+from .models import Summary, Project, Publication, Member, Post, Gallery
 
 class SummaryAdmin(admin.ModelAdmin):
     formfield_overrides = {
@@ -13,3 +13,4 @@ admin.site.register(Project)
 admin.site.register(Publication)
 admin.site.register(Member)
 admin.site.register(Post)
+admin.site.register(Gallery)

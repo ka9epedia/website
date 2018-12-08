@@ -283,13 +283,7 @@
                                     <a href="#home" class="active">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#about">About</a>
-                                </li>
-                                <li>
-                                    <a href="#projects">Projects</a>
-                                </li>
-                                <li>
-                                    <a href="#contact" style="margin-right: 0px;">Contact</a>
+                                    <a href="#about">Event</a>
                                 </li>
                                 <!-- Hide Blog Link for a while
                                 <li>
@@ -311,13 +305,7 @@
                         <a href="#home" class="center-align sidenav-close">Home</a>
                     </li>
                     <li>
-                        <a href="#about" class="center-align sidenav-close">About</a>
-                    </li>
-                    <li>
-                        <a href="#projects" class="center-align sidenav-close">Projects</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="center-align sidenav-close">Contact</a>
+                        <a href="#about" class="center-align sidenav-close">Event</a>
                     </li>
                     <!-- Hide Blog Link for a while
                     <li style="border-bottom: none;">
@@ -341,30 +329,33 @@
                         <div class="col s12">
                             <ul>
                                 <li>
-                                    <a href="{% url 'blog' %}" target="_blank" class="zoomableLink">
-                                        <!--<i class="fab fa-github"></i>-->
+                                    <a href="{% url 'blog' %}" class="zoomableLink">
                                         <i class="fas fa-book-open"></i>
+                                        <h6>blog</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'member' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'member' %}" class="zoomableLink">
                                         <i class="fas fa-users"></i>
+                                        <h6>member</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'contact' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'contact' %}" class="zoomableLink">
                                         <i class="fas fa-envelope"></i>
+                                        <h6>contact</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'event' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'event' %}" class="zoomableLink">
                                         <i class="fas fa-camera"></i>
+                                        <h6>event</h6>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'questionnaire' %}" target="_blank" class="zoomableLink">
-                                        <!--<i class="fas fa-envelope"></i>-->
                                         <i class="fas fa-question"></i>
+                                        <h6>questionnaire</h6>
                                     </a>
                                 </li>
                             </ul>
@@ -399,9 +390,10 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="col s12">
-                                    <div class="card card-box">
-
-                                    </div>
+                                      {% for gallery in gallery %}
+                                      <img src="{{gallery.image.url}}" alt="image" style="width: 100%;">
+                                      <hr size="10" color="#0000ff" noshade>
+                                      {% endfor %}
                                 </div>
                             </div>
                         </div>

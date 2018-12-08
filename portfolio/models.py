@@ -50,3 +50,6 @@ class Member(models.Model):
 
     def __str__(self):
         return self.member
+
+class Gallery(models.Model):
+    image = models.ImageField(upload_to='images/')

@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.utils import timezone
-from .models import Summary, Project, Publication, Member, Post
+from .models import Summary, Project, Publication, Member, Post, Gallery
 from .forms import ContactForm, SummaryForm
 
 #ホーム
@@ -71,8 +71,10 @@ def contact(request):
 #イベントページ設定
 def event(request):
     summary = Summary.objects.first()
+    gallery = Gallery.objects.all()
 
-    return render(request, 'portfolio/event.html', {'summary': summary})
+    return render(request, 'portfolio/event.html', {'summary': summary,
+                                                    'gallery': gallery})
 
 #アンケートページ設定
 def questionnaire(request):

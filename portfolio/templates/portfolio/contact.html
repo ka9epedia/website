@@ -284,13 +284,7 @@
                                     <a href="#home" class="active">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#about">About</a>
-                                </li>
-                                <li>
-                                    <a href="#projects">Projects</a>
-                                </li>
-                                <li>
-                                    <a href="#contact" style="margin-right: 0px;">Contact</a>
+                                    <a href="#about">Contact</a>
                                 </li>
                                 <!-- Hide Blog Link for a while
                                 <li>
@@ -312,13 +306,7 @@
                         <a href="#home" class="center-align sidenav-close">Home</a>
                     </li>
                     <li>
-                        <a href="#about" class="center-align sidenav-close">About</a>
-                    </li>
-                    <li>
-                        <a href="#projects" class="center-align sidenav-close">Projects</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="center-align sidenav-close">Contact</a>
+                        <a href="#about" class="center-align sidenav-close">Contact</a>
                     </li>
                     <!-- Hide Blog Link for a while
                     <li style="border-bottom: none;">
@@ -342,30 +330,33 @@
                         <div class="col s12">
                             <ul>
                                 <li>
-                                    <a href="{% url 'blog' %}" target="_blank" class="zoomableLink">
-                                        <!--<i class="fab fa-github"></i>-->
+                                    <a href="{% url 'blog' %}" class="zoomableLink">
                                         <i class="fas fa-book-open"></i>
+                                        <h6>blog</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'member' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'member' %}" class="zoomableLink">
                                         <i class="fas fa-users"></i>
+                                        <h6>member</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'contact' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'contact' %}" class="zoomableLink">
                                         <i class="fas fa-envelope"></i>
+                                        <h6>contact</h6>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'event' %}" target="_blank" class="zoomableLink">
+                                    <a href="{% url 'event' %}" class="zoomableLink">
                                         <i class="fas fa-camera"></i>
+                                        <h6>event</h6>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'questionnaire' %}" target="_blank" class="zoomableLink">
-                                        <!--<i class="fas fa-envelope"></i>-->
                                         <i class="fas fa-question"></i>
+                                        <h6>questionnaire</h6>
                                     </a>
                                 </li>
                             </ul>
@@ -400,23 +391,16 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="col s12">
-                                      <form class="contact-form" action="" method="post">
-                                        <div class="item">
-                                          <label class="label" for="name" name="name">名前</label>
-                                          <input id="name" type="text">
+                                    <form method="post"><input type='hidden' name='csrfmiddlewaretoken' value='Pq8TcR84W9hE1VLSovYGcBaib64fLZIPgX00UdNHi3C7V113YP8SHEQEP1Ih8SIf' />
+                                        <div class="form-group">
+                                            <input type="email" name="from_email" class="form-control" placeholder="Email:" required id="id_from_email" />
                                         </div>
-                                        <div class="item">
-                                          <label class="label" for="e-mail">メール</label>
-                                          <input id="e-mail" type="email" name="email">
-                                        </div>
-                                        <div class="item">
-                                          <label class="label" for="message">本文</label>
-                                          <textarea rows="4" id="message" placeholder="ご意見をお寄せ下さい。" name="comment"></textarea>
-                                        </div>
-                                        <div class="item no-label">
-                                          <input type="submit">
-                                        </div>
-                                      </form>
+                                      <div class="form-group">
+                                          <textarea name="message" cols="40" rows="7" class="form-control" placeholder="Message:" required id="id_message">
+                                          </textarea>
+                                      </div>
+                                        <button type="submit" class="btn btn-dark">Send message</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

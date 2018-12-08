@@ -25,7 +25,7 @@ $(window).on('load', function () {
     var typed = new Typed('#type', {
         strings: [
             "Welcome to OdaLab Website",
-            "Start scrolling to study more about us",
+            "Start scrolling",
         ],
         typeSpeed: 60,
         backSpeed: 60,
