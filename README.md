@@ -10,35 +10,35 @@ WebSite
 ## local start
 create local_setting.py
 <pre>
-  import os
-  BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-  
-  SECRET_KEY = 'secret_key'
-  
-  EMAIL_HOST = 'host'
-  EMAIL_PORT = 587
-  EMAIL_HOST_USER = 'host_user'
-  EMAIL_HOST_PASSWORD = 'host_passwor'
-  EMAIL_USE_TLS = True
-  
-  DEBUG = True
-  
-  ALLOWED_HOSTS = ['*']
-  
-  DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-  }
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-  MARTOR_IMGUR_CLIENT_ID = 'client_id'
-  MARTOR_IMGUR_API_KEY   = 'api_key'
+SECRET_KEY = 'secret_key'
+ 
+EMAIL_HOST = 'host'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'host_user'
+EMAIL_HOST_PASSWORD = 'host_passwor'
+EMAIL_USE_TLS = True
+ 
+DEBUG = True
+ 
+ALLOWED_HOSTS = ['*']
+  
+DATABASES = {
+  'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+  }
+}
+
+MARTOR_IMGUR_CLIENT_ID = 'client_id'
+MARTOR_IMGUR_API_KEY   = 'api_key'
 </pre>
 create database and run
 <pre>
-  python3 manage.py makemigrations
-  python3 manage.py migrate
-  python3 manage.py runserver
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver
 </pre>
 go [localhost:8000](http://localhost:8000/)
