@@ -1,61 +1,6 @@
-.contact-form {
-  border: 1px solid #ccc;
-  padding: 10px;
-  font-size: 13px;
-  font-family: sans-serif;
-}
-.contact-form .item {
-  display: block;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-.contact-form .item.no-label {
-  padding: 5px 0px 5px 60px;
-}
-
-.contact-form .item .label {
-  float: left;
-  padding: 5px;
-  margin:0;
-}
-.contact-form .item .radio-group{
-  padding: 5px 0px 5px 60px;
-}
-.contact-form .item input[type=text],
-.contact-form .item input[type=email],
-.contact-form .item textarea {
-  display: block;
-  margin-left: 60px;
+#id_message {
   width: 200px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 13px;
-}
-.contact-form .item ::placeholder {
-  color: #ccc;
-}
-.contact-form .item textarea {
-  outline: none;
-  border: 1px solid #ccc;
-  resize: vertical;
-}
-input[type=submit] {
-  border: none;
-  outline: none;
-  display: block;
-  line-height: 30px;
-  width: 160px;
-  text-align: center;
-  font-size: 13px;
-  color: #fff;
-  background-color: #696;
-  border-bottom: 4px solid #464;
-  cursor:pointer;
-
-  box-sizing: content-box;
-  transition:0.1s ease all
-}
-input[type=submit]:hover{
-  opacity:0.6;
+  max-height: 200px;
+  padding: 8px;
+  line-height: 20px;
 }

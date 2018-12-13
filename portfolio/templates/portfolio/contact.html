@@ -350,7 +350,7 @@
                                 <li>
                                     <a href="{% url 'event' %}" class="zoomableLink">
                                         <i class="fas fa-camera"></i>
-                                        <h6>event</h6>
+                                        <h6>gallery</h6>
                                     </a>
                                 </li>
                                 <li>
@@ -389,21 +389,27 @@
                             <h1 class="center-align section-heading" style="color: #252934;">Contact</h1>
                         </div>
                         <div class="col s12">
-                            <div class="row">
-                                <div class="col s12">
-                                    <form method="post"><input type='hidden' name='csrfmiddlewaretoken' value='Pq8TcR84W9hE1VLSovYGcBaib64fLZIPgX00UdNHi3C7V113YP8SHEQEP1Ih8SIf' />
-                                        <div class="form-group">
-                                            <input type="email" name="from_email" class="form-control" placeholder="Email:" required id="id_from_email" />
-                                        </div>
-                                      <div class="form-group">
-                                          <textarea name="message" cols="40" rows="7" class="form-control" placeholder="Message:" required id="id_message">
-                                          </textarea>
-                                      </div>
-                                        <button type="submit" class="btn btn-dark">Send message</button>
-                                    </form>
+                            <div class="card-panel">
+                                    <h4 class="header2">Contact Form</h4>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <form method="post"><input type='hidden' name='csrfmiddlewaretoken' value='Pq8TcR84W9hE1VLSovYGcBaib64fLZIPgX00UdNHi3C7V113YP8SHEQEP1Ih8SIf' />
+                                            <div class="form-group">
+                                                <input type="text" name="from_name" class="form-control" placeholder="Name:" required id="id_from_name" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" name="from_email" class="form-control" placeholder="Email:" required id="id_from_email" />
+                                            </div>
+                                            <div class="form-group">
+                                              <textarea name="message" class="form-control" placeholder="Message:" required id="id_message"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-dark">Send message</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </section>
@@ -423,6 +429,7 @@
     <script src="{% static 'js/typed.min.js' %}"></script>
     <!-- Custom Javascript File -->
     <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
     <noscript id="deferred-styles">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">

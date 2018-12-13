@@ -3,7 +3,7 @@
 <html lang="ja">
 
 <head>
-    <title>OdaLab Event</title>
+    <title>OdaLab Gallery</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -283,7 +283,7 @@
                                     <a href="#home" class="active">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#about">Event</a>
+                                    <a href="#about">Gallery</a>
                                 </li>
                                 <!-- Hide Blog Link for a while
                                 <li>
@@ -305,7 +305,7 @@
                         <a href="#home" class="center-align sidenav-close">Home</a>
                     </li>
                     <li>
-                        <a href="#about" class="center-align sidenav-close">Event</a>
+                        <a href="#about" class="center-align sidenav-close">Gallery</a>
                     </li>
                     <!-- Hide Blog Link for a while
                     <li style="border-bottom: none;">
@@ -321,7 +321,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
-                            <h1 class="center-align">OdaLab Event</h1>
+                            <h1 class="center-align">OdaLab Gallery</h1>
                         </div>
                         <div class="col s12 center-align">
                             <span id="type"></span>
@@ -349,7 +349,7 @@
                                 <li>
                                     <a href="{% url 'event' %}" class="zoomableLink">
                                         <i class="fas fa-camera"></i>
-                                        <h6>event</h6>
+                                        <h6>gallery</h6>
                                     </a>
                                 </li>
                                 <li>
@@ -385,16 +385,23 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
-                            <h1 class="center-align section-heading" style="color: #252934;">Event</h1>
+                            <h1 class="center-align section-heading" style="color: #252934;">Gallery</h1>
                         </div>
+                        <!--
                         <div class="col s12">
                             <div class="row">
                                 <div class="col s12">
                                       {% for gallery in gallery %}
-                                      <img src="{{gallery.image.url}}" alt="image" style="width: 100%;">
-                                      <hr size="10" color="#0000ff" noshade>
+                                      <img src="{{gallery.image.url}}" alt="image" style="width: 50%;">
                                       {% endfor %}
                                 </div>
+                            </div>
+                        </div>-->
+                        <div class="col s12">
+                            <div class="row">
+                                {% for gallery in gallery %}
+                                <div class="col s12 m6"><img src="{{gallery.image.url}}" alt="image" style="max-width: 100%;"></div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

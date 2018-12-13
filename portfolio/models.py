@@ -46,11 +46,11 @@ class Post(models.Model):
 class Member(models.Model):
 #    image = models.ImageField(upload_to='images/')
 #    grade = models.CharField(max_length=10)
-    member = models.CharField(max_length=20)
-    description = models.CharField(max_length=200)
+    name = models.CharField(max_length=20)
+    grade = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.member
+        return self.name
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to='images/')

@@ -349,7 +349,7 @@
                                 <li>
                                     <a href="{% url 'event' %}" class="zoomableLink">
                                         <i class="fas fa-camera"></i>
-                                        <h6>event</h6>
+                                        <h6>gallery</h6>
                                     </a>
                                 </li>
                                 <li>
@@ -393,8 +393,8 @@
                                     <div class="card card-box">
                                             <h6>平成30年度</h6>
                                             {% for member in member %}
-                                            <p class="inner-section-content">{{member.member}}</p>
-                                            <p>{{member.description}}</p>
+                                            <p class="inner-section-content">{{member.grade}}</p>
+                                            <p>{{member.name}}</p>
                                             <!--
                                             <img src="{{member.image.url}}" alt="image" style="width: 100%;">
                                             <p>{{member.grade}}</p>
