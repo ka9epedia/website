@@ -45,7 +45,6 @@ class Post(models.Model):
 
 class Member(models.Model):
 #    image = models.ImageField(upload_to='images/')
-#    grade = models.CharField(max_length=10)
     name = models.CharField(max_length=20)
     grade = models.CharField(max_length=200)
 

@@ -12,6 +12,29 @@ def home(request):
     projects = Project.objects.all()
     publication = Publication.objects.all()
     member = Member.objects.all()
+
+    return render(request, 'portfolio/index.html', {'summary': summary,
+                                                    'projects': projects,
+                                                    'publication': publication,
+                                                    'member': member})
+
+#ブログページ設定
+def blog(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'portfolio/blog.html', {'posts': posts})
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'portfolio/post_detail.html', {'post': post})
+
+#メンバーページ設定
+def member(request):
+    member = Member.objects.all()
+
+    return render(request, 'portfolio/member.html', {'member': member})
+
+#コンタクトページ設定
+def contact(request):
     form = ContactForm()
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -39,42 +62,13 @@ def home(request):
                 'errors': form.errors,
             })
 
-    return render(request, 'portfolio/index.html', {'summary': summary,
-                                                    'projects': projects,
-                                                    'publication': publication,
-                                                    'member': member,
-                                                    'form': form})
-#ブログページ設定
-def blog(request):
-    summary = Summary.objects.first()
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'portfolio/blog.html', {'posts': posts})
-
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'portfolio/post_detail.html', {'post': post})
-
-#メンバーページ設定
-def member(request):
-    summary = Summary.objects.first()
-    member = Member.objects.all()
-
-    return render(request, 'portfolio/member.html', {'summary': summary,
-                                                     'member': member})
-
-#コンタクトページ設定
-def contact(request):
-    summary = Summary.objects.first()
-
-    return render(request, 'portfolio/contact.html', {'summary': summary})
+    return render(request, 'portfolio/contact.html', {'form': form})
 
 #イベントページ設定
 def event(request):
-    summary = Summary.objects.first()
     gallery = Gallery.objects.all()
 
-    return render(request, 'portfolio/event.html', {'summary': summary,
-                                                    'gallery': gallery})
+    return render(request, 'portfolio/event.html', {'gallery': gallery})
 
 #アンケートページ設定
 def questionnaire(request):
