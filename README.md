@@ -18,7 +18,7 @@ git clone https://github.com/ka9epedia/website.git
 cd website
 pip install -r requirements.txt
 </pre>
-Please create local_setting.py file
+Please create local_setting.py file in mywebsite folder
 <pre>
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
