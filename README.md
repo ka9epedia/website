@@ -36,6 +36,12 @@ DATABASES = {
 MARTOR_IMGUR_CLIENT_ID = 'client_id'
 MARTOR_IMGUR_API_KEY   = 'api_key'
 </pre>
+Local Run
+<pre>
+git clone https://github.com/ka9epedia/website.git
+cd website
+pip install -r requirements.txt
+</pre>
 Please create database and run
 <pre>
 python3 manage.py makemigrations
