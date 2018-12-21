@@ -9,7 +9,7 @@
 - martor==1.3.5
 
 ## local start
-Please create local_setting.py
+Please create local_setting.py file
 <pre>
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -36,13 +36,13 @@ DATABASES = {
 MARTOR_IMGUR_CLIENT_ID = 'client_id'
 MARTOR_IMGUR_API_KEY   = 'api_key'
 </pre>
-Local Run
+Type command
 <pre>
 git clone https://github.com/ka9epedia/website.git
 cd website
 pip install -r requirements.txt
 </pre>
-Please create database and run
+Please create database and run in command line
 <pre>
 python3 manage.py makemigrations
 python3 manage.py migrate
