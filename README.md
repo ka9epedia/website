@@ -12,6 +12,12 @@
 - martor==1.3.5
 
 ## local start
+Type command
+<pre>
+git clone https://github.com/ka9epedia/website.git
+cd website
+pip install -r requirements.txt
+</pre>
 Please create local_setting.py file
 <pre>
 import os
@@ -38,12 +44,6 @@ DATABASES = {
 
 MARTOR_IMGUR_CLIENT_ID = 'client_id'
 MARTOR_IMGUR_API_KEY   = 'api_key'
-</pre>
-Type command
-<pre>
-git clone https://github.com/ka9epedia/website.git
-cd website
-pip install -r requirements.txt
 </pre>
 Please create database and run in command line
 <pre>
