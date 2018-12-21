@@ -1,6 +1,6 @@
 # WebSite
 
-## Demo
+## Image
 ![Image](https://user-images.githubusercontent.com/42766115/47839268-7c7b9500-ddf5-11e8-87d5-5cf1b6c74636.gif)
 
 ## Requirement
